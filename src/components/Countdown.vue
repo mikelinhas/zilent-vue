@@ -1,8 +1,29 @@
 <template>
 
     <div>
-        <div class="digits">
-            <p>{{days}} days - {{hours | doubledigit }}:{{minutes | doubledigit}}:{{seconds | doubledigit}}</p>
+        <div class="clock-header"> Live bidding countdown: </div>
+
+        <div class="clock">
+            <div class="clock-block">
+                <p class="clock-digits">{{days}}</p>
+                <p class="clock-text">Days</p>
+            </div>
+
+            <div class="clock-block">
+                <p class="clock-digits">{{hours | doubledigit}}</p>
+                <p class="clock-text">Hrs</p>
+            </div>
+
+            <div class="clock-block">
+                <p class="clock-digits">{{minutes |doubledigit}}</p>
+                <p class="clock-text">Min</p>
+            </div>
+
+            <div class="clock-block">
+                <p class="clock-digits">{{seconds | doubledigit }}</p>
+                <p class="clock-text">Sec</p>
+            </div>
+
         </div>
         
     </div>
