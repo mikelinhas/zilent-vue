@@ -1,8 +1,8 @@
-# example
+# Zilent-vue
 
-> A Vue.js project
+> Vue.js + webpack project to bundle the apps for Zilent.
 
-## Build Setup
+## Made with vue-cli basic setup.
 
 ``` bash
 # install dependencies
