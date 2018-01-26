@@ -2,29 +2,28 @@
 
     <div>
 
-        <div class="row">
+        <input type="text" 
+               class="form-control bidding-search" 
+               placeholder="Search..." 
+               v-model="search"
+        >
+        <div class="bidding-headers-container">
             
-            <div class="col-xs-7">
-                <input type="text" class="form-control" 
-                       placeholder="Search..." 
-                       v-model="search"
-                >
-            </div>
-
-            <div class="col-xs-5">
+            <div>
                 <button v-on:click="togglePhotos('show')" 
                         v-if="photoState == 'hide'" 
                         type="button" class="btn btn-primary">
-                        Show Photos
+                        <i class="fa fa-th"></i>
+
                 </button>
 
                 <button v-on:click="togglePhotos('hide')" 
                         v-if="photoState == 'show'"
-                        type="button" class="btn btn-primary">
-                        Hide Photos
+                        type="button" class="btn">
+                        <i class="fa fa-bars"></i>
                 </button>
                 <button v-on:click="queryItems()" 
-                        type="button" class="btn btn-primary">
+                        type="button" class="btn">
                         <i class="fa fa-refresh"></i>
                 </button>
             </div>
@@ -34,17 +33,15 @@
 
         <br>
 
-    	<div class="row">
+    	<masonry :cols="2"
+                 :gutter="0"
+                 class="item-list-container">
 
-            <div class="container">
-
-                <div v-for="item in filtereditems" class="col-sm-4 well">
-                    <Item :info="item" :photoState="photoState"></Item>
-                </div>
-
+            <div v-for="item in filtereditems" class="item-block">
+                <Item :info="item" :photoState="photoState"></Item>
             </div>
 
-    	</div>
+    	</masonry>
         
     </div>
 

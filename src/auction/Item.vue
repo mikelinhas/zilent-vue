@@ -1,22 +1,28 @@
 <template>
 
-    <div>
+    <div v-bind:class="{shadow : bidding}">
 
-        <h2> {{info.name}} </h2>
         <Photo :imageName="info.name" v-if="photoState == 'show'"></Photo>
-        <h3> by {{info.artist}} </h3>
 
-        <div v-if="status === 'waiting'">
-            <h4> Highest Bid: <strong>{{info.bids[0].amount}}€</strong> by {{info.bids[0].bidder}}</h4>
-            <button type="button" 
-                    class="btn btn-success"
-                    v-on:click="placeBid">Place Bid
-            </button>
+        <div class="item-topbid">
+            <strong>{{info.bids[0].amount}}€</strong> ({{info.bids[0].bidder}})
+        </div>
+        <p class="item-name"> {{info.name}} </p>
+        <p class="item-artist"> {{info.artist}} </p>
+
+        <div v-if="bidding" class="shadow-box"></div>
+        <div v-if="bidding">
+            <Bid :current.sync="info.bids[0]" :name="info.name" :bidding.sync="bidding"></Bid>
         </div>
 
-        <div v-else>
-            <Bid :current.sync="info.bids[0]" :name="info.name" :status.sync="status"></Bid>
-        </div>
+
+        <button v-else
+                type="button" 
+                class="btn btn-place-bid"
+                v-on:click="placeBid">
+                <i class="fa fa-shopping-cart"></i>
+        </button>
+
 
     </div>
 
@@ -43,7 +49,7 @@
 
         data() {
           return {
-            status: "waiting"
+            bidding: false
           }
           
         },
@@ -52,7 +58,7 @@
 
 		methods: {
             placeBid: function() {
-                this.status = "bidding";
+                this.bidding = true;
             },
 		}
 

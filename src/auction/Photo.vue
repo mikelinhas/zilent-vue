@@ -1,10 +1,9 @@
 <template>
 
     <div>
-        <div style="max-width: 250px">
-            <img :src="imagePath" style="width:100%; height:auto">
+        <div class="item-photo">
+            <img :src="imagePath">
         </div>
-        
     </div>
 
 </template>

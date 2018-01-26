@@ -1,27 +1,28 @@
 <template>
 
-    <div>
-        <h4> Highest Bid: <strong>{{current.amount}}€</strong> by {{current.bidder}}</h4>
+    <div class="bidding-inputs">
+        <p>{{message}}</p>     
         <input type="text" class="form-control" 
                placeholder="User name" 
                v-model="bid.user">        
         <input type="password" class="form-control" 
-               placeholder="Special code" 
+               placeholder="Password" 
                v-model="bid.code"> 
         <input type="number" class="form-control" 
                placeholder="Amount" 
                v-model="bid.amount"> 
         <br>
-        <button type="button" 
-                class="btn btn-success"
-                v-on:click="placeBid">Complete Bid!
-        </button> 
-        <button type="button" 
-                class="btn btn-danger"
-                v-on:click="cancelBid">Cancel
-        </button>  
-        <br><br>
-        <p>{{message}}</p>     
+        <div class="pull-right">
+            <button type="button" 
+                    class="btn btn-success"
+                    v-on:click="placeBid">Bid!
+            </button> 
+            <button type="button" 
+                    class="btn btn-danger"
+                    v-on:click="cancelBid">
+                    <i class="fa fa-times"></i>
+            </button>  
+        </div>
     </div>
 
 </template>
@@ -41,8 +42,8 @@
                 type: String,
                 required: true
             },
-            status: {
-                type: String,
+            bidding: {
+                type: Boolean,
                 required: true
             }
         },
@@ -62,7 +63,7 @@
         methods: {
 
             cancelBid: function () {
-                this.$emit('update:status', "waiting");
+                this.$emit('update:bidding', false);
             },
             
             placeBid: function () {
@@ -80,7 +81,7 @@
                   })
                   .then(function (response) {
                     vueVars.$emit('update:current', response.data);
-                    vueVars.$emit('update:status', "waiting");
+                    vueVars.$emit('update:bidding', false);
                   })
                   .catch(function (error) {
                     vueVars.message= error.response.data.message;
