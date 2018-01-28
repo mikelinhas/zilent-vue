@@ -12,7 +12,7 @@
                placeholder="Amount" 
                v-model="bid.amount"> 
         <br>
-        <div class="pull-right">
+        <div class="pull-right bidding-buttons">
             <button type="button" 
                     class="btn btn-success"
                     v-on:click="placeBid">Bid!

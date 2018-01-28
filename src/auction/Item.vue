@@ -10,19 +10,20 @@
         <p class="item-name"> {{info.name}} </p>
         <p class="item-artist"> {{info.artist}} </p>
 
-        <div v-if="bidding" class="shadow-box"></div>
-        <div v-if="bidding">
-            <Bid :current.sync="info.bids[0]" :name="info.name" :bidding.sync="bidding"></Bid>
-        </div>
-
-
-        <button v-else
-                type="button" 
+        <button type="button" 
                 class="btn btn-place-bid"
-                v-on:click="placeBid">
+                @click="bidding = true">
                 <i class="fa fa-shopping-cart"></i>
         </button>
 
+        <modal :bidding.sync="bidding" v-if="bidding">
+            <div class="item-topbid">
+                <strong>{{info.bids[0].amount}}€</strong> ({{info.bids[0].bidder}})
+            </div>
+            <p class="item-name"> {{info.name}} </p>
+            <p class="item-artist"> {{info.artist}} </p>
+            <Bid name="html" :current.sync="info.bids[0]" :name="info.name" :bidding.sync="bidding"></Bid>
+        </modal>
 
     </div>
 
@@ -31,6 +32,7 @@
 <script> 
     import Photo from './Photo.vue'
     import Bid from './Bid.vue'
+    import Modal from './../components/Modal.vue'
 
     export default {
         name: 'Item',
@@ -54,7 +56,7 @@
           
         },
 
-        components: {Photo,Bid},
+        components: {Photo,Bid, Modal},
 
 		methods: {
             placeBid: function() {
