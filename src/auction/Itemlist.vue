@@ -12,7 +12,7 @@
             <div>
                 <button v-on:click="togglePhotos('show')" 
                         v-if="photoState == 'hide'" 
-                        type="button" class="btn btn-primary">
+                        type="button" class="btn">
                         <i class="fa fa-th"></i>
 
                 </button>

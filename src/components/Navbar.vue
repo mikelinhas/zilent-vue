@@ -12,7 +12,7 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="links">
+        <div class="collapse navbar-collapse pull-right" id="links">
           <ul class="nav navbar-nav">
             <li v-for="url in urls" v-bind:class="{strong: url.active}"><a v-bind:href="url.link">{{url.name}}</a></li>
           </ul>
