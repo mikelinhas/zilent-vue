@@ -62,13 +62,39 @@
             items: [],
             filtereditems: [],
             search:'',
-            photoState: 'show'
+            photoState: 'show',
+            sseMessage: 'Hi, first me!'
           }        
         },
 
         components: {Item},
 
+        mounted() {
+            this.setupStream();
+        },
+
 		methods: {
+
+            setupStream: function() {
+                var es = new EventSource('auction/updates');
+                console.log("come onnnn!! work!")
+
+                es.addEventListener('connected', function (e) {
+                    console.log("I think i got a response...");
+                    console.log (e.data);
+                    console.log(e.data.welcomeMsg)
+                    console.log(e.data[0].welcomeMsg)
+                }, false);
+
+                es.addEventListener('update', function (e) {
+                    console.log (e.data);
+                }, false);
+
+                es.addEventListener('error', function (e) {
+                    console.log("Error!!!");
+                }, false);
+            },
+
 
             queryItems: function() {
                 var vueVars = this;
