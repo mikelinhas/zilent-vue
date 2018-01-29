@@ -1,6 +1,6 @@
 <template>
 
-    <div>
+    <div class="clock-container">
         <div class="clock-header"> Live bidding countdown: </div>
 
         <div class="clock">
