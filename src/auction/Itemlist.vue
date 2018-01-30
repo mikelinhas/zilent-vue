@@ -22,7 +22,7 @@
                         type="button" class="btn">
                         <i class="fa fa-bars"></i>
                 </button>
-                <button v-on:click="queryItems()" 
+                <button v-on:click="emitbroadcast()" 
                         type="button" class="btn">
                         <i class="fa fa-refresh"></i>
                 </button>
@@ -76,18 +76,19 @@
 		methods: {
 
             setupStream: function() {
-                var es = new EventSource('auction/updates');
+                var es = new EventSource('db/updates');
                 console.log("come onnnn!! work!")
 
                 es.addEventListener('connected', function (e) {
                     console.log("I think i got a response...");
-                    console.log (e.data);
-                    console.log(e.data.welcomeMsg)
-                    console.log(e.data[0].welcomeMsg)
+                    var connection = JSON.parse(e.data);
+                    console.log(connection.welcomeMsg);
                 }, false);
 
-                es.addEventListener('update', function (e) {
-                    console.log (e.data);
+                es.addEventListener('broadcast', function (e) {
+                    console.log("I received a broadcast!");
+                    var broadcast = JSON.parse(e.data);
+                    console.log (broadcast.Msg);
                 }, false);
 
                 es.addEventListener('error', function (e) {
@@ -95,6 +96,16 @@
                 }, false);
             },
 
+            emitbroadcast: function() {
+                var url = 'db/emitbroadcast';
+                axios.get(url)
+                    .then (function(response) {
+                        console.log(response.data);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+            },
 
             queryItems: function() {
                 var vueVars = this;
