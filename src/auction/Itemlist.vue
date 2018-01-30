@@ -7,28 +7,24 @@
                placeholder="Search..." 
                v-model="search"
         >
-        <div class="bidding-headers-container">
-            
-            <div>
-                <button v-on:click="togglePhotos('show')" 
-                        v-if="photoState == 'hide'" 
-                        type="button" class="btn">
-                        <i class="fa fa-th"></i>
+          
+        <div>
+            <button v-on:click="togglePhotos('show')" 
+                    v-if="photoState == 'hide'" 
+                    type="button" class="btn">
+                    <i class="fa fa-th"></i>
 
-                </button>
+            </button>
 
-                <button v-on:click="togglePhotos('hide')" 
-                        v-if="photoState == 'show'"
-                        type="button" class="btn">
-                        <i class="fa fa-bars"></i>
-                </button>
-                <button v-on:click="queryItems()" 
-                        type="button" class="btn">
-                        <i class="fa fa-refresh"></i>
-                </button>
-            </div>
-
-
+            <button v-on:click="togglePhotos('hide')" 
+                    v-if="photoState == 'show'"
+                    type="button" class="btn">
+                    <i class="fa fa-bars"></i>
+            </button>
+            <button v-on:click="queryItems()" 
+                    type="button" class="btn">
+                    <i class="fa fa-refresh"></i>
+            </button>
         </div>
 
         <br>
@@ -87,6 +83,11 @@
 
             togglePhotos: function(str) {
                 this.photoState = str;
+            },
+
+            refreshPage: function() {
+                var vueVars = this;
+                setInterval(function() {vueVars.queryItems();}, 10000);
             }
 
         },
@@ -113,6 +114,10 @@
                 };
 
             }
+        },
+
+        mounted() {
+            this.refreshPage();
         },
 
         beforeMount() {
