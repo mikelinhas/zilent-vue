@@ -1,25 +1,34 @@
 <template>
-    <div class="navbar">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle">
-            <i class="fa fa-bars fa-lg"></i>
-          </button>
+    <div>
 
-          <a class="navbar-brand" href="">
-            <img src="zebra.ico">
-          </a>
-        </div>
+      <nav class="navbar fixed-top">
+        <div class="container">
 
-        <div class="navbar-collapse">
-          <div v-for="url in urls">
-            <a :class="{strong: url.active}"
-               :href="url.link">
-                  {{url.name}}
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" 
+                    data-toggle="collapse" 
+                    data-target="#navbar-links">
+              <i class="fa fa-bars fa-lg"></i>
+            </button>
+
+            <a class="navbar-brand" href="">
+              <img src="zebra.ico">
             </a>
           </div>
+
+          <div class="collapse navbar-collapse" id="#navbar-links">
+            <ul class="navbar-nav" v-for="url in urls">
+              <li>
+                <a :class="{strong: url.active}"
+                   :href="url.link">
+                      {{url.name}}
+                </a>
+              </li>
+            </ul>
+          </div>
+
         </div>
-      </div>
+      </nav>
 
     </div>
 </template>

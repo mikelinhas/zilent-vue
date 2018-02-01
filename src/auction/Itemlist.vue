@@ -2,35 +2,32 @@
 
     <div>
 
-        <input type="text" 
-               class="form-control bidding-search" 
-               placeholder="Search..." 
-               v-model="search"
-        >
-          
-        <div>
-            <button v-on:click="togglePhotos('show')" 
-                    v-if="photoState == 'hide'" 
-                    type="button" class="btn">
-                    <i class="fa fa-th"></i>
+        <header class="bidding-headers-container">
+            <input type="text" 
+                   class="form-control bidding-search" 
+                   placeholder="Search..." 
+                   v-model="search"
+            >
+              
+            <div>
+                <button v-on:click="togglePhotos('show')" 
+                        v-if="photoState == 'hide'" 
+                        type="button" class="btn btn-custom">
+                        <i class="fa fa-th fa-2x"></i>
 
-            </button>
+                </button>
 
-            <button v-on:click="togglePhotos('hide')" 
-                    v-if="photoState == 'show'"
-                    type="button" class="btn">
-                    <i class="fa fa-bars"></i>
-            </button>
-            <button v-on:click="queryItems()" 
-                    type="button" class="btn">
-                    <i class="fa fa-refresh"></i>
-            </button>
-        </div>
+                <button v-on:click="togglePhotos('hide')" 
+                        v-if="photoState == 'show'"
+                        type="button" class="btn btn-custom">
+                        <i class="fa fa-list fa-2x"></i>
+                </button>
 
-        <br>
+            </div>
+        </header>
 
-    	<masonry :cols="2"
-                 :gutter="0"
+    	<masonry :cols="{default: 4, 1000: 4, 700: 4, 500: 2}"
+                 :gutter="5"
                  class="item-list-container">
 
             <div v-for="item in filtereditems" class="item-block">

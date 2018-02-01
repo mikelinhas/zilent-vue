@@ -20,7 +20,9 @@
             </div>
 
             <div class="clock-block">
-                <p class="clock-digits">{{seconds | doubledigit }}</p>
+                <transition name="slide-fade" mode="out-in">
+                    <p class="clock-digits" :key="seconds">{{seconds | doubledigit }}</p>
+                </transition>
                 <p class="clock-text">Sec</p>
             </div>
 

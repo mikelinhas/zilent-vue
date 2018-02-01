@@ -4,24 +4,26 @@
 
         <Photo :imageName="info.name" v-if="photoState == 'show'"></Photo>
 
-        <div class="item-topbid">
-            <strong>{{info.bids[0].amount}}€</strong> ({{info.bids[0].bidder}})
-        </div>
-        <p class="item-name"> {{info.name}} </p>
-        <p class="item-artist"> {{info.artist}} </p>
-
-        <button type="button" 
-                class="btn btn-place-bid"
-                @click="bidding = true">
-                <i class="fa fa-shopping-cart"></i>
-        </button>
-
-        <modal :bidding.sync="bidding" v-if="bidding">
+        <div class="item-info-wrapper">
+            <h3 class="item-name"> {{info.name}} </h3>
+            <h4 class="item-artist"> {{info.artist}} </h4>
             <div class="item-topbid">
                 <strong>{{info.bids[0].amount}}€</strong> ({{info.bids[0].bidder}})
             </div>
-            <p class="item-name"> {{info.name}} </p>
-            <p class="item-artist"> {{info.artist}} </p>
+
+            <button type="button" 
+                    class="btn btn-custom btn-place-bid"
+                    @click="bidding = true">
+                    <i class="fa fa-shopping-cart fa-2x"></i>
+            </button>
+        </div>
+
+        <modal :bidding.sync="bidding" v-if="bidding">
+            <h1 class="item-name"> {{info.name}} </h1>
+            <h2 class="item-artist"> {{info.artist}} </h2>
+            <div class="item-topbid">
+                <strong>{{info.bids[0].amount}}€</strong> ({{info.bids[0].bidder}})
+            </div>
             <Bid name="html" :current.sync="info.bids[0]" :name="info.name" :bidding.sync="bidding"></Bid>
         </modal>
 
