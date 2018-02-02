@@ -25,7 +25,7 @@
             </span>
         </div>
         <br>
-        <p>{{message}}</p>     
+        <p> {{message}} </p>     
 
     </div>
 
