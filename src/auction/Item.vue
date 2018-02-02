@@ -7,9 +7,11 @@
         <div class="item-info-wrapper">
             <h3 class="item-name"> {{info.name}} </h3>
             <h4 class="item-artist"> {{info.artist}} </h4>
-            <div class="item-topbid">
-                <strong>{{info.bids[0].amount}}€</strong> ({{info.bids[0].bidder}})
-            </div>
+            <transition name="slide-fade" mode="out-in">
+                <div class="item-topbid" :key="info.bids[0].amount">
+                    <strong>{{info.bids[0].amount}}€</strong> ({{info.bids[0].bidder}})
+                </div>
+            </transition>
 
             <button type="button" 
                     class="btn btn-custom btn-place-bid"
@@ -21,9 +23,11 @@
         <modal :bidding.sync="bidding" v-if="bidding">
             <h1 class="item-name"> {{info.name}} </h1>
             <h2 class="item-artist"> {{info.artist}} </h2>
-            <div class="item-topbid">
-                <strong>{{info.bids[0].amount}}€</strong> ({{info.bids[0].bidder}})
-            </div>
+            <transition name="slide-fade" mode="out-in">
+                <div class="item-topbid" :key="info.bids[0].amount">
+                    <strong>{{info.bids[0].amount}}€</strong> ({{info.bids[0].bidder}})
+                </div>
+            </transition>
             <Bid name="html" :current.sync="info.bids[0]" :name="info.name" :bidding.sync="bidding"></Bid>
         </modal>
 

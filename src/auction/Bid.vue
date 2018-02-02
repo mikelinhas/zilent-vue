@@ -1,28 +1,32 @@
 <template>
 
     <div class="bidding-inputs">
-        <p>{{message}}</p>     
+        <button type="button" 
+                class="btn btn-custom"
+                id="close-modal"
+                v-on:click="cancelBid">
+                <i class="fa fa-times fa-2x"></i>
+        </button>  
         <input type="text" class="form-control" 
                placeholder="User name" 
                v-model="bid.user">        
         <input type="password" class="form-control" 
                placeholder="Password" 
                v-model="bid.code"> 
-        <input type="number" class="form-control" 
-               placeholder="Amount" 
-               v-model="bid.amount"> 
-        <br>
-        <div class="pull-right bidding-buttons">
-            <button type="button" 
-                    class="btn btn-success"
-                    v-on:click="placeBid">Bid!
-            </button> 
-            <button type="button" 
-                    class="btn btn-danger"
-                    v-on:click="cancelBid">
-                    <i class="fa fa-times"></i>
-            </button>  
+        <div clasS="input-group">
+            <input type="number" class="form-control" 
+                   placeholder="Place your bid" 
+                   v-model="bid.amount"> 
+            <span class="input-group-btn">
+                <button type="button"
+                        class="btn btn-success btn-input"
+                        v-on:click="placeBid"> Bid!
+                </button>
+            </span>
         </div>
+        <br>
+        <p>{{message}}</p>     
+
     </div>
 
 </template>

@@ -10,18 +10,22 @@
             </div>
 
             <div class="clock-block">
-                <p class="clock-digits">{{hours | doubledigit}}</p>
+                <transition name="slide-fade" mode="out-in">
+                    <p class="clock-digits" :key="hours">{{hours | doubledigit}}</p>
+                </transition>
                 <p class="clock-text">Hrs</p>
             </div>
 
             <div class="clock-block">
-                <p class="clock-digits">{{minutes |doubledigit}}</p>
+                <transition name="slide-fade" mode="out-in">
+                    <p class="clock-digits" :key="minutes">{{minutes |doubledigit}}</p>
+                </transition>
                 <p class="clock-text">Min</p>
             </div>
 
             <div class="clock-block">
-                <transition name="slide-fade" mode="out-in">
-                    <p class="clock-digits" :key="seconds">{{seconds | doubledigit }}</p>
+                <transition name="digit-fade" mode="out-in">
+                    <p :class="{'clock-digits': true, redtext: redText}" :key="seconds">{{seconds | doubledigit }}</p>
                 </transition>
                 <p class="clock-text">Sec</p>
             </div>
@@ -47,7 +51,8 @@
         data() {
           return {
             date: Math.trunc((new Date(this.deadline)).getTime() / 1000),
-            now: Math.trunc((new Date()).getTime() / 1000)
+            now: Math.trunc((new Date()).getTime() / 1000),
+            redText: false
           }
           
         },
@@ -61,8 +66,18 @@
             seconds: function() {
                 return (this.date - this.now) % 60;
             },
-            minutes: function() {
-                return Math.trunc((this.date - this.now) / 60) % 60;
+            minutes: {
+                get: function() {
+                    if (this.days <= 20 && this.hours <= 20) {
+                        this.redText = true;
+                    };
+                    return Math.trunc((this.date - this.now) / 60) % 60;
+                },
+                set: function(newValue) {
+                    if (this.days <= 20 && this.hours <= 20) {
+                        this.redText = true;
+                    };
+                }
             },
             hours: function() {
                 return Math.trunc((this.date - this.now) / 60 / 60) % 24;
@@ -70,6 +85,9 @@
             days: function() {
                 return Math.trunc((this.date - this.now) / 60 / 60 / 24);
             }
+        },
+
+        watch: {
         },
 
         filters: {
