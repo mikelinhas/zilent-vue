@@ -10,14 +10,14 @@
             </div>
 
             <div class="clock-block">
-                <transition name="slide-fade" mode="out-in">
+                <transition name="digit-fade" mode="out-in">
                     <p class="clock-digits" :key="hours">{{hours | doubledigit}}</p>
                 </transition>
                 <p class="clock-text">Hrs</p>
             </div>
 
             <div class="clock-block">
-                <transition name="slide-fade" mode="out-in">
+                <transition name="digit-fade" mode="out-in">
                     <p class="clock-digits" :key="minutes">{{minutes |doubledigit}}</p>
                 </transition>
                 <p class="clock-text">Min</p>

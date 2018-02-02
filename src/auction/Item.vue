@@ -7,7 +7,7 @@
         <div class="item-info-wrapper">
             <h3 class="item-name"> {{info.name}} </h3>
             <h4 class="item-artist"> {{info.artist}} </h4>
-            <transition name="slide-fade" mode="out-in">
+            <transition name="green-in" mode="out-in">
                 <div class="item-topbid" :key="info.bids[0].amount">
                     <strong>{{info.bids[0].amount}}€</strong> ({{info.bids[0].bidder}})
                 </div>
@@ -23,7 +23,7 @@
         <modal :bidding.sync="bidding" v-if="bidding">
             <h1 class="item-name"> {{info.name}} </h1>
             <h2 class="item-artist"> {{info.artist}} </h2>
-            <transition name="slide-fade" mode="out-in">
+            <transition name="green-in" mode="out-in">
                 <div class="item-topbid" :key="info.bids[0].amount">
                     <strong>{{info.bids[0].amount}}€</strong> ({{info.bids[0].bidder}})
                 </div>
