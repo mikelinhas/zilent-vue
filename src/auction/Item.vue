@@ -5,7 +5,7 @@
         <Photo :imageName="info.image" v-if="photoState == 'show'"></Photo>
 
         <div class="item-info-wrapper">
-            <a class="info-link" href="#infocuadro">+info</a>
+            <a class="info-link" :href="link">+info</a>
             <h4 class="item-artist"> {{info.artist}} </h4>
             <h3 class="item-name"> {{info.name}} </h3>
             <transition name="green-in" mode="out-in">
@@ -22,7 +22,6 @@
         </div>
 
         <modal :bidding.sync="bidding" v-if="bidding">
-            <a class="info-link" href="#infocuadro">+info</a>
             <h2 class="item-artist"> {{info.artist}} </h2>
             <h1 class="item-name"> {{info.name}} </h1>
             <transition name="green-in" mode="out-in">
@@ -70,7 +69,13 @@
             placeBid: function() {
                 this.bidding = true;
             },
-		}
+		},
+
+        computed: {
+            link: function() {
+                return "/auction/" + this.info._id
+            }
+        }
 
     }
 

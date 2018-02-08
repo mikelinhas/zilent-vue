@@ -1,12 +1,12 @@
 <template>
 
     <div class="clock-container">
-        <div class="clock-header"> Live bidding countdown: </div>
+        <div class="clock-header"> La subasta termina en: </div>
 
         <div class="clock">
             <div class="clock-block">
                 <p class="clock-digits">{{days}}</p>
-                <p class="clock-text">Days</p>
+                <p class="clock-text">Dias</p>
             </div>
 
             <div class="clock-block">
@@ -27,7 +27,7 @@
                 <transition name="digit-fade" mode="out-in">
                     <p :class="{'clock-digits': true, redtext: redText}" :key="seconds">{{seconds | doubledigit }}</p>
                 </transition>
-                <p class="clock-text">Sec</p>
+                <p class="clock-text">Seg</p>
             </div>
 
         </div>

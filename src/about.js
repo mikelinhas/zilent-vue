@@ -1,10 +1,10 @@
 import Vue from 'vue'
 
-import Navbar from './components/Navbar.vue'
+import Navbarxs from './components/Navbarxs.vue'
 
 new Vue({
 	el: '#app',
-	components: {Navbar},
+	components: {Navbarxs},
 	data() {
 	    return {
 	    	query: '',
