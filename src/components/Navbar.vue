@@ -36,9 +36,7 @@
 
         data() {
           return {
-            urls: [{'name':'Home', 'link':'/', 'active':0}, 
-                   {'name':'About', 'link':'about', 'active':0},
-                   {'name':'Auction', 'link':'auction', 'active':0}],
+            urls: [{'name':'Fundación Livingstone', 'link':'auction', 'active':0}],
           }
           
         },
