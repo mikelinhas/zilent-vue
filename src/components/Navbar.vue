@@ -30,13 +30,12 @@
             activeurl: {
                 type: [String, Array],
                 default: '/',
-                required: true
             }
         },
 
         data() {
           return {
-            urls: [{'name':'Fundación Livingstone', 'link':'auction', 'active':0}],
+            urls: [{'name':'Fundación Livingstone', 'link':'https://fundacionlivinstone.org', 'active':0}],
           }
           
         },
