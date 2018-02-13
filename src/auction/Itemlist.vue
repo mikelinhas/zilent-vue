@@ -71,6 +71,7 @@
                     .then (function (response) {
                         vueVars.items = response.data;
                         vueVars.filtereditems = response.data;
+                        vueVars.filterItems();
                     })
                     .catch(function (error) {
                         vueVars.errorMessage = "There has been an Error! Oh no.."
@@ -78,19 +79,8 @@
                     })
             },
 
-            togglePhotos: function(str) {
-                this.photoState = str;
-            },
+            filterItems: function() {
 
-            refreshPage: function() {
-                var vueVars = this;
-                setInterval(function() {vueVars.queryItems();}, 10000);
-            }
-
-        },
-
-        watch: {
-            search: function() {
                 var vueVars = this;
                 vueVars.filtereditems = [];
                 var name = '';
@@ -109,7 +99,22 @@
                         vueVars.filtereditems.push(vueVars.items[i]);
                     }
                 };
+            },
 
+            togglePhotos: function(str) {
+                this.photoState = str;
+            },
+
+            refreshPage: function() {
+                var vueVars = this;
+                setInterval(function() {vueVars.queryItems();}, 10000);
+            }
+
+        },
+
+        watch: {
+            search: function() {
+                this.filterItems()
             }
         },
 

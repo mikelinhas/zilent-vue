@@ -9,7 +9,7 @@
                v-model="bid.code"> 
         <div clasS="input-group">
             <input type="number" class="form-control" 
-                   placeholder="Introduce tu puja" 
+                   placeholder="€" 
                    v-model="bid.amount"> 
             <span class="input-group-btn">
                 <button type="button"

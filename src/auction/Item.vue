@@ -27,7 +27,7 @@
                     <i class="fa fa-times fa-2x"></i>
             </button>
 
-            <transition name="digit-fade" mode="out-it">
+            <transition name="digit-fade">
                 <Bid name="html" v-if="bidding" :current.sync="info.bids[0]" :name="info.name" :bidding.sync="bidding"></Bid>
             </transition>
         </div>
