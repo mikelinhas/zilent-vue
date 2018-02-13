@@ -3,10 +3,10 @@ var webpack = require('webpack')
 
 module.exports = {
   entry: {
-    auction: './src/auction.js',
-    home: './src/home.js',
-    about: './src/about.js',
-    auctionID: './src/auctionID.js'
+    auction: './src/auction.js'
+    //home: './src/home.js',
+    //about: './src/about.js',
+    //auctionID: './src/auctionID.js'
   },
   output: {
     path: path.resolve(__dirname, './dist'),

@@ -14,23 +14,23 @@
             </transition>
 
             <button type="button"
-                    v-if="!bidding" 
                     class="btn btn-custom btn-place-bid"
                     @click="bidding = true">
                     <i class="fa fa-shopping-cart fa-2x"></i>
             </button>
 
-            <button type="button"
-                    v-if="bidding" 
-                    class="btn btn-custom btn-place-bid"
-                    @click="bidding = false">
-                    <i class="fa fa-times fa-2x"></i>
-            </button>
-
-            <transition name="digit-fade" mode="out-it">
-                <Bid name="html" v-if="bidding" :current.sync="info.bids[0]" :name="info.name" :bidding.sync="bidding"></Bid>
-            </transition>
         </div>
+
+        <modal :bidding.sync="bidding" v-if="bidding">
+            <h2 class="item-artist"> {{info.artist}} </h2>
+            <h1 class="item-name"> {{info.name}} </h1>
+            <transition name="green-in" mode="out-in">
+                <div class="item-topbid" :key="info.bids[0].amount">
+                    <strong>{{info.bids[0].amount}}€</strong> ({{info.bids[0].bidder}})
+                </div>
+            </transition>
+            <Bid name="html" :current.sync="info.bids[0]" :name="info.name" :bidding.sync="bidding"></Bid>
+        </modal>
 
     </div>
 
@@ -39,6 +39,7 @@
 <script> 
     import Photo from './Photo.vue'
     import Bid from './Bid.vue'
+    import Modal from './../components/Modal.vue'
 
     export default {
         name: 'Item',
@@ -62,7 +63,7 @@
           
         },
 
-        components: {Photo,Bid},
+        components: {Photo,Bid, Modal},
 
 		methods: {
             placeBid: function() {

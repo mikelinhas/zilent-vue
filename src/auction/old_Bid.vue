@@ -1,23 +1,30 @@
 <template>
 
     <div class="bidding-inputs">
+        <button type="button" 
+                class="btn btn-custom"
+                id="close-modal"
+                v-on:click="cancelBid">
+                <i class="fa fa-times fa-2x"></i>
+        </button>  
         <input type="text" class="form-control" 
-               placeholder="Usuario" 
+               placeholder="User name" 
                v-model="bid.user">        
         <input type="password" class="form-control" 
-               placeholder="Contraseña" 
+               placeholder="Password" 
                v-model="bid.code"> 
         <div clasS="input-group">
             <input type="number" class="form-control" 
-                   placeholder="Introduce tu puja" 
+                   placeholder="Place your bid" 
                    v-model="bid.amount"> 
             <span class="input-group-btn">
                 <button type="button"
                         class="btn btn-success btn-input"
-                        v-on:click="placeBid"> Pujar!
+                        v-on:click="placeBid"> Bid!
                 </button>
             </span>
         </div>
+        <br>
         <p> {{message}} </p>     
 
     </div>
@@ -65,7 +72,7 @@
             
             placeBid: function () {
                 
-                this.message = ""
+                this.message = "sending bid..."
                 var vueVars = this;
                 var date = new Date();
 
