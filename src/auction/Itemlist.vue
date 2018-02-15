@@ -26,7 +26,7 @@
             </div>
         </header>
 
-    	<masonry :cols="{default: 4, 1000: 4, 700: 4, 500: 2}"
+    	<masonry :cols="{default: 4, 1000: 4, 700: 3, 500: 2}"
                  :gutter="5"
                  class="item-list-container">
 
