@@ -9,7 +9,7 @@
             <h3 class="item-name"> {{info.name}} </h3>
             <transition name="green-in" mode="out-in">
                 <div class="item-topbid" :key="info.bids[0].amount">
-                    <strong>{{info.bids[0].amount}}€</strong> ({{info.bids[0].bidder}})
+                    <strong>{{info.bids[0].amount}}€</strong> {{info.bids[0].bidder}}
                 </div>
             </transition>
 
