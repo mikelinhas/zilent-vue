@@ -28,7 +28,13 @@
             </button>
 
             <transition name="digit-fade">
-                <Bid name="html" v-if="bidding" :current.sync="info.bids[0]" :name="info.name" :bidding.sync="bidding"></Bid>
+                <Bid name="html" 
+                     v-if="bidding" 
+                     :current.sync="info.bids[0]" 
+                     :name="info.name" 
+                     :id="info._id"
+                     :bidding.sync="bidding">
+                </Bid>
             </transition>
         </div>
 

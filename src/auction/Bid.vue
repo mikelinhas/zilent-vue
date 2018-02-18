@@ -13,8 +13,14 @@
                    v-model="bid.amount"> 
             <span class="input-group-btn">
                 <button type="button"
+                        v-if="!placingBid"
                         class="btn btn-success btn-input"
                         v-on:click="placeBid"> Pujar!
+                </button>
+                <button type="button"
+                        v-if="placingBid"
+                        class="btn btn-default btn-input"
+                        > Pujar!
                 </button>
             </span>
         </div>
@@ -39,6 +45,10 @@
                 type: String,
                 required: true
             },
+            id: {
+                type: String,
+                required: true
+            },
             bidding: {
                 type: Boolean,
                 required: true
@@ -48,7 +58,8 @@
         data() {
             return {
                bid: {},
-               message: ""
+               message: "",
+               placingBid: false
             }
         },
 
@@ -66,10 +77,12 @@
             placeBid: function () {
                 
                 this.message = ""
+                this.placingBid = true
                 var vueVars = this;
                 var date = new Date();
 
                 axios.post('/db/addBid', {
+                    id: vueVars.id,
                     name: vueVars.name,
                     user: vueVars.bid.user,
                     code: vueVars.bid.code,
@@ -79,9 +92,11 @@
                   .then(function (response) {
                     vueVars.$emit('update:current', response.data);
                     vueVars.$emit('update:bidding', false);
+                    vueVars.placingBid = false;
                   })
                   .catch(function (error) {
-                    vueVars.message= error.response.data.message;
+                    vueVars.message = error.response.data.message;
+                    vueVars.placingBid = false;
                     if (error.response.data.type == 4) {
                         vueVars.$emit('update:current', error.response.data.currentBid)
                     };
