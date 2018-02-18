@@ -37,7 +37,10 @@
 
         data() {
           return {
-            urls: [{'name':'Fundación Livingstone', 'link':'https://fundacionlivingstone.org', 'active':0}],
+            urls: [
+              {'name':'Catálogo', 'link':'#'},
+              {'name':'Fundación Livingstone', 'link':'https://fundacionlivingstone.org', 'active':0}
+            ],
           }
           
         },
