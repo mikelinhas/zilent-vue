@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse pull-right" id="links">
           <ul class="nav navbar-nav">
             <li v-for="url in urls" v-bind:class="{strong: url.active}">
-              <a v-bind:href="url.link">{{url.name}} <img src="logo.ico"></a> 
+              <a :href="url.link">{{url.name}} <img :src="url.logo"></a> 
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -38,8 +38,8 @@
         data() {
           return {
             urls: [
-              {'name':'Catálogo', 'link':'#'},
-              {'name':'Fundación Livingstone', 'link':'https://fundacionlivingstone.org', 'active':0}
+              {'name':'Catálogo', 'link':'#', 'logo':''},
+              {'name':'Fundación Livingstone', 'link':'https://fundacionlivingstone.org', 'active':0, 'logo':'logo.ico'}
             ],
           }
           
