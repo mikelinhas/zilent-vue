@@ -5,7 +5,7 @@
         <header class="bidding-headers-container">
             <input type="text" 
                    class="form-control bidding-search" 
-                   placeholder="Search..." 
+                   placeholder="Buscar..." 
                    v-model="search"
             >
               
